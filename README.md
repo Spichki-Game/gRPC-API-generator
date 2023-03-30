@@ -36,19 +36,19 @@ if grpc_api_generator.run('Name-Of-Repo-Name'):
 
 ```
 src/
-  name_of_other_package/
-    __init__.py
-    ...etc
+   name_of_other_package/
+      __init__.py
+      ...etc
 
   name_of_main_package/
-    __init__.py
-    ...etc
+      __init__.py
+      ...etc
 
   grpc_api/
-    __init__.py
-    name_of_main_package_pb2.py
-    name_of_main_package_pb2_grpc.py
+      __init__.py
+      name_of_main_package_pb2.py
+      name_of_main_package_pb2_grpc.py
 
   proto_schemas/
-    name_of_main_package.proto
+      name_of_main_package.proto
 ```
