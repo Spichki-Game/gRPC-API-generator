@@ -8,6 +8,7 @@ Library for the Spichki Game project.
 ## API
 
 * Signature:
+
 `[ function ]: run(project_name: str) -> bool`
 
 * Usage:
