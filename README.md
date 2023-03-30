@@ -3,18 +3,20 @@
 Library for the Spichki Game project.
 
 <br>
-<br>
 
 ## API
 
-* Signature:
+### Signature:
 ```
 [ function ]: run(project_name: str) -> bool
 ```
 
+This function generates gRPC-API (Server + Client) from a protobuf files. The library was required for comfortable api generation for microservices of the Spichki Game project.
+
 <br>
 
-* Usage:
+### Usage:
+
 ```
 import grpc_api_generator
 
@@ -26,8 +28,6 @@ if grpc_api_generator.run('Name-Of-Repo-Name'):
 
 # ...etc
 ```
-
-This function generates gRPC-API (Server + Client) from a protobuf files. The library was required for comfortable api generation for microservices of the Spichki Game project.
 
 <br>
 <br>
