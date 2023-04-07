@@ -11,7 +11,7 @@ class ConstantSet:
         self.project_name = project_name
 
         for path in sys.path:
-            if project_name in path:
+            if project_name + '/src' in path:
 
                 self.API_NAME: Path = (
                     self.project_name.lower().replace('-', '_')
