@@ -68,8 +68,8 @@ class ConstantSet:
                 break
 
 
-def run(project_name: str, echo: bool = False) -> bool:
-    const = ConstantSet(project_name)
+def run(project_name: str, api_name: str, echo: bool = False) -> bool:
+    const = ConstantSet(project_name, api_name)
 
     check = (
         const.PROTO_FILE_PATH.exists(),
