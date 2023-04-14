@@ -7,14 +7,15 @@ from grpc_tools import protoc
 
 
 class ConstantSet:
-    def __init__(self, project_name: str):
+    def __init__(self, project_name: str, api_name: str):
         self.project_name = project_name
 
         for path in sys.path:
             if project_name + '/src' in path:
 
-                self.API_NAME: Path = (
-                    self.project_name.lower().replace('-', '_')
+                self.API_NAME: str = (
+                    # self.project_name.lower().replace('-', '_')
+                    api_name
                 )
 
                 self.API_NAME_ALIAS: str = (
@@ -22,7 +23,8 @@ class ConstantSet:
                 )
 
                 self.ROOT_DIR_PATH: Path = Path(
-                    os.path.expanduser(path)
+                    # os.path.expanduser(path)
+                    path
                 )
 
                 self.PROTO_DIR_PATH: Path = Path.joinpath(
@@ -62,6 +64,8 @@ class ConstantSet:
                     f"s/{self.INVALID_LINE}/{self.FIX_LINE}/",
                     f"{self.TARGET_FILE_PATH}"
                 ]
+
+                break
 
 
 def run(project_name: str, echo: bool = False) -> bool:
