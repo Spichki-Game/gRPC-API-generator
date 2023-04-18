@@ -36,7 +36,7 @@ poetry run generate-api $SERVICE_NAME
 
 <br>
 
-#### Usage in your services:
+#### For example:
 
 * Protobuf:
 ```Protobuf
@@ -124,7 +124,9 @@ async def service_name_client() -> None:
         stub = srv.ServiceNameStub(channel)
         
         response: msg.ResponseNameType = await stub.RpcName(
-            field_name="Guitar stack"
+            msg.RequestNameTye(
+                field_name="Guitar stack"
+            )
         )
         
         print(response)
