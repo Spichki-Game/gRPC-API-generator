@@ -38,8 +38,31 @@ poetry run generate-api $SERVICE_NAME
 
 #### Usage in your services:
 
+* Protobuf:
+```Protobuf
+
+synax = "proto3";
+package = service_name;
+
+
+service ServiceName {
+    rpc RpcName(RequestNameType) returns(ResponseNameType);
+}
+
+message RequestNameType {
+    string field_name = 1;
+}
+
+message ResponseNameType {
+    string field_name_a = 1;
+    int32 field_name_b = 2;
+}
+
+```
+
 * Server:
 ```Python
+
 import grpc
 import asyncio
 
@@ -56,8 +79,8 @@ class ServiceName(srv.ServiceNameServicer:
                       context: grpc.aoi.ServicerContext) -> msg.ResponseNameType:
         
         return msg.ResponseNameType(
-            field_name_a=data,
-            field_name_b=data
+            field_name_a="Peavey EVH",
+            field_name_b=5150
         )
         
         
