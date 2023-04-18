@@ -22,7 +22,7 @@ generate-api = "grpc_api_generator:run"
 <br>
 
 Alternatively, you can use [Poetry CLI](https://python-poetry.org/docs/cli/#add):
-```Hack
+```Shell
 poetry add git https://github.com/Spichki-Game/gRPC-API-generator.git
 ```
 
@@ -38,15 +38,15 @@ poetry run generate-api $SERVICE_NAME
 
 ## Required microservice project structure
 
-```python
-src/
+```yaml
+src:
    name_of_other_package/
       __init__.py
-      ...etc
+      ... etc
 
   name_of_main_package/
       __init__.py
-      ...etc
+      ... etc
 
   grpc_api/
       __init__.py
