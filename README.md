@@ -38,7 +38,10 @@ poetry run generate-api $SERVICE_NAME
 
 #### For example:
 
+<br>
+
 * Protobuf:
+
 ```Protobuf
 
 synax = "proto3";
@@ -60,7 +63,10 @@ message ResponseNameType {
 
 ```
 
+<br>
+
 * Microservice (as server):
+
 ```Python
 
 import grpc
@@ -107,6 +113,8 @@ def start() -> None:
 
 ```
 
+<br>
+
 * API Gateway (as client):
 ```Python
 
@@ -124,7 +132,7 @@ async def service_name_client() -> None:
         stub = srv.ServiceNameStub(channel)
         
         response: msg.ResponseNameType = await stub.RpcName(
-            msg.RequestNameTye(
+            msg.RequestNameType(
                 field_name="Guitar stack"
             )
         )
