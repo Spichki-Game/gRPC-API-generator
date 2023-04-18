@@ -55,21 +55,34 @@ from grpc_api import service_name_pb2_grpc as srv
 ## Required microservice project structure
 
 ```yaml
-src/:
+service_name/:
+   docs/:
+      - etc...
+      
+   src/:
 
-   name_of_other_package/:
-      - __init__.py
-      - etc
+      name_of_other_package/:
+         - __init__.py
+         - etc...
 
-  name_of_main_package/:
-      - __init__.py
-      - etc
+      service_name/:
+         - __init__.py
+         - etc...
 
-  grpc_api/:
-      - __init__.py
-      - name_of_main_package_pb2.py       # generated types from proto schema
-      - name_of_main_package_pb2_grpc.py  # generated server and client stubs
+      grpc_api/:
+         - __init__.py
+         - name_of_main_package_pb2.py       # generated types from proto schema
+         - name_of_main_package_pb2_grpc.py  # generated server and client stubs
 
-  protobuf/:
-      - name_of_main_package.proto
+      protobuf/:
+         - name_of_main_package.proto
+         
+   tests/:
+      - etc...
+
+   - .dockerignore
+   - Dockerfile
+   - LICENSE
+   - README.md
+   - pyproject.toml
 ```
