@@ -1,4 +1,4 @@
-# gRPC-API generator
+# gRPC API generator
 
 Common library for the Spichki Game project. It's provide gRPC API (server + client stubs) for gateway-to-microservice communication.
 
@@ -38,7 +38,7 @@ poetry run generate-api $SERVICE_NAME
 
 ## Required microservice project structure
 
-```
+```python
 src/
    name_of_other_package/
       __init__.py
