@@ -19,7 +19,9 @@ generate-api = "grpc_api_generator:run"
 
 ```
 
-Alternativly, you can use a [command line interface](https://python-poetry.org/docs/cli/#add):
+<br>
+
+Alternativly, you can use a [Poetry CLI](https://python-poetry.org/docs/cli/#add):
 ```bash
 $ poetry add git https://github.com/Spichki-Game/gRPC-API-generator.git
 ```
