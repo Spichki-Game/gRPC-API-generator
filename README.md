@@ -22,7 +22,7 @@ generate-api = "grpc_api_generator:run"
 <br>
 
 Alternatively, you can use [Poetry CLI](https://python-poetry.org/docs/cli/#add):
-```bash
+```Hack
 poetry add git https://github.com/Spichki-Game/gRPC-API-generator.git
 ```
 
@@ -30,7 +30,7 @@ poetry add git https://github.com/Spichki-Game/gRPC-API-generator.git
 
 #### After the above steps, run your script to generate gRPC API:
 
-```shell
+```Shell
 poetry run generate-api $SERVICE_NAME
 ```
 
