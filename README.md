@@ -30,7 +30,7 @@ poetry add git https://github.com/Spichki-Game/gRPC-API-generator.git
 
 #### After the above steps, run your script to generate gRPC API:
 
-```bash
+```shell
 poetry run generate-api $SERVICE_NAME
 ```
 
