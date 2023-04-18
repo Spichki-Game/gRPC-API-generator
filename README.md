@@ -6,7 +6,7 @@ Library for the Spichki Game project.
 
 ## Usage
 
-### Add *grpc-api-generator* to poetry config:
+#### Add **grpc-api-generator** to Poetry config:
 ```
 # File: pyproject.toml
 
