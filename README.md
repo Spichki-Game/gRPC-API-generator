@@ -51,8 +51,8 @@ src/:
 
   grpc_api/:
       - __init__.py
-      - name_of_main_package_pb2.py
-      - name_of_main_package_pb2_grpc.py
+      - name_of_main_package_pb2.py       # generated types from proto schema
+      - name_of_main_package_pb2_grpc.py  # generated server and client stubs
 
   protobuf/:
       - name_of_main_package.proto
