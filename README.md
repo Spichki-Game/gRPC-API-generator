@@ -1,6 +1,6 @@
-# gRPC-API Generator
+# gRPC-API generator
 
-Library for the Spichki Game project.
+Common library for the Spichki Game project. It's provide gRPC API for gateway-to-microservice communication.
 
 <br>
 
@@ -21,9 +21,17 @@ generate-api = "grpc_api_generator:run"
 
 <br>
 
-Alternativly, you can use a [Poetry CLI](https://python-poetry.org/docs/cli/#add):
+Alternatively, you can use [Poetry CLI](https://python-poetry.org/docs/cli/#add):
 ```bash
-$ poetry add git https://github.com/Spichki-Game/gRPC-API-generator.git
+service-name@spichki-game /srv/service-name $ poetry add git https://github.com/Spichki-Game/gRPC-API-generator.git
+```
+
+<br>
+
+#### After the above steps, run your script to generate gRPC API:
+
+```bash
+poetry run generate-api $SERVICE_NAME
 ```
 
 
