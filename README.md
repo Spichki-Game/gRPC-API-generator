@@ -40,8 +40,48 @@ poetry run generate-api $SERVICE_NAME
 
 * Server:
 ```Python
+import grpc
+import asyncio
+
 from grpc_api import service_name_pb2 as msg
 from grpc_api import service_name_pb2_grpc as srv
+
+
+LISTEN_ADDR = "[::]:50051"
+
+
+class ServiceName(srv.ServiceNameServicer:
+    async def RpcName(self,
+                      request: msg.RequestNameType,
+                      context: grpc.aoi.ServicerContext) -> msg.ResponseNameType:
+        
+        return msg.ResponseNameType(
+            field_name_a=data,
+            field_name_b=data
+        )
+        
+        
+async def service_name_server() -> None:
+    server = grpc.aio.server()
+    
+    srv.add_ServiceNameServicer_to_server(
+        ServiceName(),
+        server
+    )
+    
+    server.add_insecure_port(LISTEN_ADDR)
+    
+    await server.start()
+    await server.wait_for_termination()
+    
+    
+def start() -> None:
+    print("[ Start ]: Service_name server\n")
+    
+    asyncio.run(
+        service_name_server()
+    )
+
 ```
 
 * Client:
@@ -75,7 +115,7 @@ service_name/:
          - name_of_main_package_pb2_grpc.py  # generated server and client stubs
 
       protobuf/:
-         - name_of_main_package.proto
+         - service_name.proto
          
    tests/:
       - etc...
