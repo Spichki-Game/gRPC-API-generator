@@ -6,7 +6,8 @@ Library for the Spichki Game project.
 
 ## Usage
 
-#### Add `grpc-api-generator` library to [Poetry config](https://python-poetry.org/docs/pyproject/):
+#### Add **grpc-api-generator** library to [Poetry config](https://python-poetry.org/docs/pyproject/):
+
 ```toml
 # File: pyproject.toml
 
@@ -17,6 +18,12 @@ grpc-api-generator = {git = "https://github.com/Spichki-Game/gRPC-API-generator.
 generate-api = "grpc_api_generator:run"
 
 ```
+
+Alternativly, you can use a [command line interface](https://python-poetry.org/docs/cli/#add):
+```bash
+$ poetry add git https://github.com/Spichki-Game/gRPC-API-generator.git
+```
+
 
 This function generates gRPC-API (Server + Client) from a protobuf files. The library was required for comfortable api generation for microservices of the Spichki Game project.
 
