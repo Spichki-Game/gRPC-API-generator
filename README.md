@@ -60,7 +60,7 @@ message ResponseNameType {
 
 ```
 
-* Server:
+* Microservice (as server):
 ```Python
 
 import grpc
@@ -70,10 +70,10 @@ from grpc_api import service_name_pb2 as msg
 from grpc_api import service_name_pb2_grpc as srv
 
 
-LISTEN_ADDR = "[::]:50051"
+LISTEN_ADDR = "172.30.100.101:50051"
 
 
-class ServiceName(srv.ServiceNameServicer:
+class ServiceName(srv.ServiceNameServicer):
     async def RpcName(self,
                       request: msg.RequestNameType,
                       context: grpc.aoi.ServicerContext) -> msg.ResponseNameType:
@@ -107,10 +107,28 @@ def start() -> None:
 
 ```
 
-* Client:
+* API Gateway (as client):
 ```Python
+
+import grpc
+
 from grpc_api import service_name_pb2 as msg
 from grpc_api import service_name_pb2_grpc as srv
+
+
+SERVICE_ADDR = "172.30.100.102:50051"
+
+
+async def service_name_client() -> None:
+    async with grpc.aio.insecure_channel(SERVICE)
+        stub = srv.ServiceNameStub(channel)
+        
+        response: msg.ResponseNameType = await stub.RpcName(
+            field_name="Guitar stack"
+        )
+        
+        print(response)
+
 ```
 
 <br>
