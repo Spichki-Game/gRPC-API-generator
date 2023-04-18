@@ -36,6 +36,22 @@ poetry run generate-api $SERVICE_NAME
 
 <br>
 
+#### Usage in your services:
+
+* Server:
+```Python
+from grpc_api import service_name_pb2 as msg
+from grpc_api import service_name_pb2_grpc as srv
+```
+
+* Client:
+```Python
+from grpc_api import service_name_pb2 as msg
+from grpc_api import service_name_pb2_grpc as srv
+```
+
+<br>
+
 ## Required microservice project structure
 
 ```yaml
