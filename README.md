@@ -1,6 +1,6 @@
 # gRPC-API generator
 
-Common library for the Spichki Game project. It's provide gRPC API for gateway-to-microservice communication.
+Common library for the Spichki Game project. It's provide gRPC API (server + client stubs) for gateway-to-microservice communication.
 
 <br>
 
@@ -34,26 +34,6 @@ poetry add git https://github.com/Spichki-Game/gRPC-API-generator.git
 poetry run generate-api $SERVICE_NAME
 ```
 
-
-This function generates gRPC-API (Server + Client) from a protobuf files. The library was required for comfortable api generation for microservices of the Spichki Game project.
-
-<br>
-
-### Usage:
-
-```
-import grpc_api_generator
-
-
-if grpc_api_generator.run('Name-Of-Repo-Name'):
-	from grpc_api import name_of_repo_name_pb2 as msg
-	from grpc_api import name_of_repo_name_pb2_frpc as srv
-
-
-# ...etc
-```
-
-<br>
 <br>
 
 ## Required microservice project structure
@@ -73,6 +53,6 @@ src/
       name_of_main_package_pb2.py
       name_of_main_package_pb2_grpc.py
 
-  proto_schemas/
+  protobuf/
       name_of_main_package.proto
 ```
