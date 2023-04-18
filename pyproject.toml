@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "gRPC-API-generator"
+name = "grpc-api-generator"
 version = "0.1.0"
 description = "Library for the Spichki Game project"
 authors = ["SciBourne <bourne-sci-hack@yandex.ru>"]
