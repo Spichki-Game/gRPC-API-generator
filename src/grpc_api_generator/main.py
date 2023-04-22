@@ -1,3 +1,4 @@
+import os
 import sys
 import subprocess
 
@@ -5,56 +6,57 @@ from grpc_tools import protoc
 
 
 class GeneratorAPI:
-    PROTO_PATH: str = "src/protobuf"
-    API_PATH: str = "src/grpc_api"
+    WORK_DIR: str = "src"
+    PROTO_DIR: str = "protobuf"
+    API_DIR: str = "grpc_api"
 
     def __init__(self, service_name: str):
         self.service_name = service_name
 
-    def run(self, echo: bool = False) -> None:
-        self.generate()
-        self.move()
-        self.patch()
-        self.print_complete() if echo else None
-
-    def generate(self) -> None:
+    def __generate(self) -> None:
         protoc.main(
-            [f"--proto-path={self.PROTO_PATH}",
+            [f"-I{self.API_DIR}",
              "--python_out=.",
              "--grpc_python_out=.",
-             f"{self.PROTO_PATH}/{self.service_name}.proto"]
+             "--pyi_out=.",
+             f"{self.API_DIR}/{self.service_name}.proto"]
         )
 
-    def move(self) -> None:
-        file_names = [
-            f"{self.service_name}_pb2.py",
-            f"{self.service_name}_pb2_grpc.py"
-        ]
+    def __change_workdir(self) -> None:
+        os.chdir(self.WORK_DIR)
 
-        for name in file_names:
-            subprocess.call(
-                ["mv",
-                 f"{self.PROTO_PATH}/{name}",
-                 f"{self.API_PATH}/{name}"]
-            )
-
-    def patch(self) -> None:
-        target_file = f"{self.API_PATH}/{self.service_name}_pb2_grpc.py"
-        patch = "s/from src.protobuf/from grpc_api/"
-
+    def __copy_proto(self) -> None:
         subprocess.call(
-            ["sed", "-i", patch, target_file]
+            ["cp",
+             f"{self.PROTO_DIR}/{self.service_name}.proto",
+             f"{self.API_DIR}/{self.service_name}.proto"]
         )
 
-    def print_complete(self) -> None:
+    def __remove_proto(self) -> None:
+        subprocess.call(
+            ["rm",
+             "-f",
+             f"{self.API_DIR}/{self.service_name}.proto"]
+        )
+
+    def __print_complete(self) -> None:
         api_files: str = subprocess.getoutput(
-            f"ls {self.API_PATH}"
+            f"ls {self.API_DIR}/{self.service_name}*.py*"
         )
 
-        print("[ Info ]: Generated api files:")
+        print()
+        print(" [ Info ]: Generated api files:")
 
         for name in api_files.split('\n'):
-            print(f" - {self.API_PATH}/{name}")
+            print(f"  - {name}")
+        print()
+
+    def run(self, echo: bool = False) -> None:
+        self.__change_workdir()
+        self.__copy_proto()
+        self.__generate()
+        self.__remove_proto()
+        self.__print_complete() if echo else None
 
 
 def run(command_line_args: list = sys.argv) -> None:
